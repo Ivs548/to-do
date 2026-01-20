@@ -33,6 +33,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -45,6 +46,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
         
         header {
@@ -74,47 +76,48 @@
         
         .main-container {
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: 20px;
             flex: 1;
         }
         
-        /* Стили для боковой панели с карточками */
+        /* Стили для боковой панели с карточками - УМЕНЬШЕНЫ НА 40% */
         .sidebar {
             display: flex;
             flex-direction: column;
-            gap: 12px; /* Уменьшен промежуток между карточками */
+            gap: 8px;
         }
         
         .card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 12px 15px; /* Уменьшен padding еще на 25% */
+            padding: 8px 10px; /* Уменьшено на 40% */
             box-shadow: var(--shadow);
             cursor: pointer;
             transition: var(--transition);
-            border-left: 4px solid var(--primary);
+            border-left: 3px solid var(--primary);
             min-height: auto;
+            user-select: none;
         }
         
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
         }
         
         .card-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px; /* Уменьшен отступ */
-            font-size: 1rem; /* Уменьшен размер шрифта */
+            margin-bottom: 3px;
+            font-size: 0.85rem; /* Уменьшен размер шрифта */
             font-weight: 600;
             color: var(--primary);
         }
         
         .card-content {
             color: #666;
-            font-size: 0.8rem; /* Уменьшен размер шрифта */
+            font-size: 0.7rem; /* Уменьшен размер шрифта */
         }
         
         .card.today {
@@ -142,37 +145,38 @@
         }
         
         .categories-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--primary);
         }
         
         .category-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 12px;
         }
         
         .category-btn {
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 6px 10px; /* Уменьшен padding */
-            border-radius: 16px;
+            gap: 4px;
+            padding: 5px 8px;
+            border-radius: 14px;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
-            font-size: 0.8rem; /* Уменьшен размер шрифта */
+            font-size: 0.75rem;
             color: white;
             white-space: nowrap;
+            user-select: none;
         }
         
         .category-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
         }
         
         .category-btn.event {
@@ -205,7 +209,7 @@
         }
         
         .category-btn i {
-            font-size: 0.8rem; /* Уменьшен размер иконок */
+            font-size: 0.7rem;
         }
         
         /* Стили для основного контента */
@@ -219,6 +223,7 @@
             max-height: 70vh;
             display: flex;
             flex-direction: column;
+            -webkit-overflow-scrolling: touch;
         }
         
         .content-header {
@@ -243,6 +248,11 @@
             cursor: pointer;
             color: #888;
             transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .close-btn:hover {
@@ -253,18 +263,18 @@
         .notes-style-list {
             display: flex;
             flex-direction: column;
-            gap: 6px; /* Уменьшен промежуток между задачами */
+            gap: 6px;
             flex: 1;
             overflow-y: auto;
         }
         
         .task-item-editable {
             display: flex;
-            align-items: center; /* Центрируем по вертикали */
-            padding: 6px 10px; /* Уменьшен padding в 2 раза */
+            align-items: center;
+            padding: 6px 10px;
             border-radius: 6px;
             background-color: #f9f9f9;
-            min-height: 36px; /* Уменьшена минимальная высота в 2 раза */
+            min-height: 36px;
             transition: var(--transition);
             position: relative;
         }
@@ -295,6 +305,8 @@
             resize: none;
             min-height: 22px;
             line-height: 1.4;
+            -webkit-appearance: none;
+            border-radius: 0;
         }
         
         .task-input:focus {
@@ -317,6 +329,8 @@
             font-family: inherit;
             color: #666;
             display: none;
+            -webkit-appearance: none;
+            border-radius: 0;
         }
         
         .add-task-input::placeholder {
@@ -334,7 +348,7 @@
             flex-shrink: 0;
         }
         
-        /* Стили для сворачиваемых карточек продуктов и покупок */
+        /* Стили для сворачиваемых карточек категорий */
         .collapsible-card {
             background-color: white;
             border-radius: var(--border-radius);
@@ -411,6 +425,8 @@
             justify-content: center;
             gap: 6px;
             flex: 1;
+            user-select: none;
+            -webkit-appearance: none;
         }
         
         .backup-btn:hover {
@@ -516,14 +532,16 @@
         }
         
         .calendar-nav button {
-            padding: 5px 10px;
+            padding: 6px 10px;
             border: none;
             background-color: var(--primary);
             color: white;
             border-radius: 4px;
             cursor: pointer;
             transition: var(--transition);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            user-select: none;
+            -webkit-appearance: none;
         }
         
         .calendar-nav button:hover {
@@ -641,6 +659,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             transition: var(--transition);
             z-index: 100;
+            -webkit-appearance: none;
         }
         
         .add-task-btn:hover {
@@ -688,13 +707,19 @@
         .close-modal {
             background: none;
             border: none;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #888;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-appearance: none;
         }
         
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
         .form-group label {
@@ -708,25 +733,78 @@
         .form-group select, 
         .form-group textarea {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            -webkit-appearance: none;
         }
         
         .form-group textarea {
-            min-height: 70px;
+            min-height: 80px;
             resize: vertical;
         }
         
+        /* Особые стили для input type="date" в Safari */
+        input[type="date"] {
+            position: relative;
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: auto;
+            height: auto;
+            color: transparent;
+            background: transparent;
+        }
+        
+        input[type="date"]::-webkit-inner-spin-button,
+        input[type="date"]::-webkit-clear-button {
+            display: none;
+        }
+        
+        /* Стили для повторяющихся задач */
+        .recurrence-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .recurrence-option {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            user-select: none;
+        }
+        
+        .recurrence-option:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .recurrence-option.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
         .btn {
-            padding: 8px 16px;
+            padding: 10px 20px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            -webkit-appearance: none;
         }
         
         .btn-primary {
@@ -751,7 +829,7 @@
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
         
         /* Стиль для пустого состояния */
@@ -838,8 +916,16 @@
             }
             
             .category-btn {
-                padding: 5px 8px;
-                font-size: 0.75rem;
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+            
+            body {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 15px;
             }
         }
     </style>
@@ -850,7 +936,6 @@
             <i class="fas fa-tasks"></i>
             <h1>To-Do Planner+</h1>
         </div>
-        <!-- Убрана дата справа от названия приложения -->
     </header>
     
     <div class="main-container">
@@ -1065,15 +1150,33 @@
             let currentCategory = null;
             let lastFocusedInput = null;
             
+            // Какие категории являются сворачиваемыми (ВСЕ КРОМЕ мероприятий и медицины)
+            const collapsibleCategories = ['household', 'products', 'shopping', 'study', 'hobby'];
+            
             // Инициализация приложения
             function initApp() {
                 showTodayView();
                 
-                // Обработчики событий для карточек
-                todayCard.addEventListener('click', showTodayView);
-                weekCard.addEventListener('click', showWeekView);
-                monthCard.addEventListener('click', showMonthView);
-                yearCard.addEventListener('click', showYearView);
+                // Обработчики событий для карточек - с использованием click вместо touch
+                todayCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showTodayView();
+                });
+                
+                weekCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showWeekView();
+                });
+                
+                monthCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMonthView();
+                });
+                
+                yearCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showYearView();
+                });
                 
                 // Обработчики для модального окна
                 addTaskBtn.addEventListener('click', openAddTaskModal);
@@ -1081,7 +1184,10 @@
                 cancelTaskBtn.addEventListener('click', closeTaskModal);
                 
                 // Обработчик отправки формы задачи
-                taskForm.addEventListener('submit', saveTask);
+                taskForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    saveTask();
+                });
                 
                 // Обработчики для повторяющихся задач
                 document.querySelectorAll('.recurrence-option').forEach(option => {
@@ -1103,24 +1209,37 @@
                 document.querySelector('.recurrence-option[data-value="none"]').classList.add('selected');
                 
                 // Установка минимальной даты в поле выбора даты
-                document.getElementById('task-date').min = new Date().toISOString().split('T')[0];
+                const today = new Date();
+                const formattedDate = today.toISOString().split('T')[0];
+                document.getElementById('task-date').min = formattedDate;
+                document.getElementById('task-date').value = formattedDate;
                 
                 // Обработчики для кнопок категорий
                 Object.keys(categoryButtons).forEach(category => {
-                    categoryButtons[category].addEventListener('click', () => {
+                    categoryButtons[category].addEventListener('click', function(e) {
+                        e.preventDefault();
                         showCategoryView(category);
                     });
                 });
                 
                 // Обработчик для кнопки закрытия категории
-                closeCategoryViewBtn.addEventListener('click', function() {
+                closeCategoryViewBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
                     showTodayView();
                     this.style.display = 'none';
                 });
                 
                 // Обработчики для резервного копирования
-                exportBackupBtn.addEventListener('click', exportBackup);
-                importBackupBtn.addEventListener('click', () => importFileInput.click());
+                exportBackupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    exportBackup();
+                });
+                
+                importBackupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    importFileInput.click();
+                });
+                
                 importFileInput.addEventListener('change', importBackup);
                 
                 // Запуск автоматического переноса невыполненных задач
@@ -1128,6 +1247,13 @@
                 
                 // Первоначальная проверка невыполненных задач
                 checkAndMoveUncompletedTasks();
+                
+                // Добавляем обработчик для кликов вне модального окна
+                window.addEventListener('click', function(e) {
+                    if (e.target === taskModal) {
+                        closeTaskModal();
+                    }
+                });
             }
             
             // Загрузка задач из localStorage
@@ -1149,51 +1275,56 @@
                 const categories = {
                     'event': { 
                         name: 'Мероприятия', 
-                        color: 'var(--cat-event)',
+                        color: '#FFA500',
                         icon: 'fas fa-calendar-check',
-                        priority: true
+                        priority: true,
+                        collapsible: false // Не сворачиваемая
                     },
                     'medical': { 
                         name: 'Медицина', 
-                        color: 'var(--cat-medical)',
+                        color: '#FF69B4',
                         icon: 'fas fa-heartbeat',
-                        priority: true
+                        priority: true,
+                        collapsible: false // Не сворачиваемая
                     },
                     'household': { 
                         name: 'Бытовые', 
-                        color: 'var(--cat-household)',
+                        color: '#1E90FF',
                         icon: 'fas fa-home',
-                        priority: false
+                        priority: false,
+                        collapsible: true // Сворачиваемая
                     },
                     'products': { 
                         name: 'Продукты', 
-                        color: 'var(--cat-products)',
+                        color: '#808080',
                         icon: 'fas fa-shopping-basket',
                         priority: false,
-                        collapsible: true
+                        collapsible: true // Сворачиваемая
                     },
                     'shopping': { 
                         name: 'Покупки', 
-                        color: 'var(--cat-shopping)',
+                        color: '#9370DB',
                         icon: 'fas fa-shopping-cart',
                         priority: false,
-                        collapsible: true
+                        collapsible: true // Сворачиваемая
                     },
                     'study': { 
                         name: 'Учебные', 
-                        color: 'var(--cat-study)',
+                        color: '#FFD700',
                         icon: 'fas fa-graduation-cap',
-                        priority: false
+                        priority: false,
+                        collapsible: true // Сворачиваемая
                     },
                     'hobby': { 
                         name: 'Хобби', 
-                        color: 'var(--cat-hobby)',
+                        color: '#32CD32',
                         icon: 'fas fa-palette',
-                        priority: false
+                        priority: false,
+                        collapsible: true // Сворачиваемая
                     }
                 };
                 
-                return categories[category] || { name: 'Без категории', color: '#ccc', icon: 'fas fa-tasks', priority: false };
+                return categories[category] || { name: 'Без категории', color: '#ccc', icon: 'fas fa-tasks', priority: false, collapsible: false };
             }
             
             // Форматирование даты
@@ -1263,14 +1394,33 @@
                     if (tasksByCategory[category] && tasksByCategory[category].length > 0) {
                         const categoryInfo = getCategoryInfo(category);
                         
-                        // Для продуктов и покупок создаем сворачиваемые карточки
+                        // Для сворачиваемых категорий создаем карточки
                         if (categoryInfo.collapsible) {
                             const cardTasks = tasksByCategory[category];
                             const cardElement = createCollapsibleCategoryCard(category, cardTasks);
                             allTasksContainer.appendChild(cardElement);
                         } else {
-                            // Для остальных категорий добавляем задачи напрямую в список
+                            // Для не сворачиваемых категорий (мероприятия и медицина) добавляем задачи напрямую
                             const categoryTasks = tasksByCategory[category];
+                            
+                            // Для приоритетных категорий можно добавить заголовок
+                            if (categoryInfo.priority) {
+                                const priorityHeader = document.createElement('div');
+                                priorityHeader.className = 'card-header';
+                                priorityHeader.style.cursor = 'default';
+                                priorityHeader.style.marginBottom = '5px';
+                                priorityHeader.style.backgroundColor = 'transparent';
+                                priorityHeader.style.padding = '5px 0';
+                                priorityHeader.innerHTML = `
+                                    <div class="card-header-title">
+                                        <i class="${categoryInfo.icon}"></i>
+                                        <span>${categoryInfo.name} (${categoryTasks.length})</span>
+                                    </div>
+                                `;
+                                allTasksContainer.appendChild(priorityHeader);
+                            }
+                            
+                            // Добавляем задачи
                             categoryTasks.forEach(task => {
                                 const taskElement = createEditableTaskElement(task);
                                 allTasksContainer.appendChild(taskElement);
@@ -1296,10 +1446,15 @@
                 addTaskInput.style.display = 'block';
                 
                 // Вставляем поле в нужное место
-                if (afterElement && afterElement.parentNode) {
-                    afterElement.parentNode.insertBefore(addTaskInput, afterElement.nextSibling);
+                const taskList = contentArea.querySelector('.notes-style-list');
+                if (taskList) {
+                    if (afterElement && afterElement.parentNode) {
+                        afterElement.parentNode.insertBefore(addTaskInput, afterElement.nextSibling);
+                    } else {
+                        taskList.appendChild(addTaskInput);
+                    }
                 } else {
-                    contentArea.querySelector('.notes-style-list').appendChild(addTaskInput);
+                    contentArea.appendChild(addTaskInput);
                 }
                 
                 // Фокусируемся на поле ввода
@@ -1369,6 +1524,7 @@
                 card.className = 'collapsible-card';
                 card.id = cardId;
                 
+                // По умолчанию сворачиваемые карточки развернуты
                 const isCollapsed = localStorage.getItem(`card-${category}-collapsed`) === 'true';
                 
                 card.innerHTML = `
@@ -1405,7 +1561,8 @@
                 
                 // Обработчик для сворачивания/разворачивания карточки
                 const cardHeader = card.querySelector('.card-header');
-                cardHeader.addEventListener('click', function() {
+                cardHeader.addEventListener('click', function(e) {
+                    e.preventDefault();
                     const card = document.getElementById(this.dataset.card);
                     const content = card.querySelector('.card-content-collapsible');
                     const icon = this.querySelector('.fa-chevron-down');
@@ -1646,7 +1803,8 @@
                     `;
                     
                     // При клике на день недели открываем задачи на этот день
-                    dayCard.addEventListener('click', function() {
+                    dayCard.addEventListener('click', function(e) {
+                        e.preventDefault();
                         showDayTasks(day);
                     });
                     
@@ -1689,7 +1847,8 @@
                 addTaskBtn.textContent = 'Добавить задачу на эту дату';
                 addTaskBtn.style.marginTop = '12px';
                 
-                addTaskBtn.addEventListener('click', function() {
+                addTaskBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
                     openAddTaskModalForDate(date);
                 });
                 
@@ -1789,7 +1948,8 @@
                     `;
                     
                     // Обработчик клика по дню
-                    dayElement.addEventListener('click', function() {
+                    dayElement.addEventListener('click', function(e) {
+                        e.preventDefault();
                         showDayTasks(dayDate);
                     });
                     
@@ -1801,17 +1961,20 @@
                 contentArea.appendChild(calendar);
                 
                 // Обработчики событий для навигации по месяцам
-                document.getElementById('prev-month').addEventListener('click', function() {
+                document.getElementById('prev-month').addEventListener('click', function(e) {
+                    e.preventDefault();
                     currentDate.setMonth(currentDate.getMonth() - 1);
                     showMonthView();
                 });
                 
-                document.getElementById('next-month').addEventListener('click', function() {
+                document.getElementById('next-month').addEventListener('click', function(e) {
+                    e.preventDefault();
                     currentDate.setMonth(currentDate.getMonth() + 1);
                     showMonthView();
                 });
                 
-                document.getElementById('today-month').addEventListener('click', function() {
+                document.getElementById('today-month').addEventListener('click', function(e) {
+                    e.preventDefault();
                     currentDate = new Date();
                     showMonthView();
                 });
@@ -1862,7 +2025,8 @@
                     `;
                     
                     // Обработчик клика по месяцу
-                    monthCard.addEventListener('click', function() {
+                    monthCard.addEventListener('click', function(e) {
+                        e.preventDefault();
                         currentDate = new Date(currentDate.getFullYear(), month, 1);
                         showMonthView();
                     });
@@ -1882,7 +2046,8 @@
                 document.getElementById('task-category').value = 'household';
                 
                 // Установка выбранной даты
-                document.getElementById('task-date').value = date.toISOString().split('T')[0];
+                const formattedDate = date.toISOString().split('T')[0];
+                document.getElementById('task-date').value = formattedDate;
                 
                 // Сброс повторяемости
                 document.querySelector('.recurrence-option[data-value="none"]').click();
@@ -1901,9 +2066,7 @@
             }
             
             // Сохранение задачи
-            function saveTask(e) {
-                e.preventDefault();
-                
+            function saveTask() {
                 const title = document.getElementById('task-title').value.trim();
                 const description = document.getElementById('task-description').value.trim();
                 const category = document.getElementById('task-category').value;
@@ -2054,7 +2217,9 @@
                 const linkElement = document.createElement('a');
                 linkElement.setAttribute('href', dataUri);
                 linkElement.setAttribute('download', exportFileDefaultName);
+                document.body.appendChild(linkElement);
                 linkElement.click();
+                document.body.removeChild(linkElement);
                 
                 alert('Резервная копия успешно сохранена!');
             }
