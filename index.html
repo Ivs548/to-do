@@ -23,19 +23,18 @@
         .logo h1 { color: var(--primary); font-size: 2rem; }
         .logo i { color: var(--primary); font-size: 2.2rem; }
         
-        .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background-color: white; border-radius: var(--border-radius); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; }
-        .nav-buttons { display: flex; gap: 15px; align-items: center; flex: 1; }
-        .nav-card { background-color: white; border-radius: var(--border-radius); padding: 12px 15px; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); user-select: none; flex: 1; max-width: 200px; }
-        .nav-card:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); }
+        .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 10px; background-color: white; border-radius: var(--border-radius); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; flex-wrap: nowrap; }
+        .nav-buttons { display: flex; gap: 10px; align-items: center; flex: 1; min-width: 0; flex-wrap: nowrap; }
+        .nav-card { background-color: white; border-radius: var(--border-radius); padding: 12px 15px; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); user-select: none; flex: 1; min-width: 0; }
         .nav-card-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; font-size: 0.9rem; font-weight: 600; color: var(--primary); }
-        .nav-card-content { color: #666; font-size: 0.75rem; }
+        .nav-card-content { color: #666; font-size: 0.75rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .add-task-nav-btn { width: 50px; height: 50px; border-radius: 50%; background-color: var(--primary); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); transition: var(--transition); display: flex; align-items: center; justify-content: center; -webkit-appearance: none; flex-shrink: 0; }
         .add-task-nav-btn:hover { background-color: var(--secondary); transform: scale(1.08); }
         
         .main-content { display: flex; flex-direction: column; gap: 20px; flex: 1; }
         .categories-container { background-color: white; border-radius: var(--border-radius); padding: 15px; box-shadow: var(--shadow); }
         .categories-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--primary); }
-        .category-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .category-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; max-height: 70px; overflow: hidden; }
         .category-btn { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 16px; border: none; cursor: pointer; transition: var(--transition); font-weight: 500; font-size: 0.8rem; color: white; white-space: nowrap; user-select: none; }
         .category-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
         .category-btn.event { background-color: var(--cat-event); }
@@ -50,7 +49,7 @@
         .content-area { background-color: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--shadow); min-height: 400px; display: flex; flex-direction: column; }
         .content-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; flex-shrink: 0; }
         .content-title { font-size: 1.5rem; color: var(--primary); }
-        .notes-style-list { display: flex; flex-direction: column; gap: 8px; flex: 1; overflow-y: auto; max-height: 500px; }
+        .notes-style-list { display: flex; flex-direction: column; gap: 8px; flex: 1; overflow-y: auto; max-height: none; }
         
         .task-item-editable { display: flex; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background-color: #f9f9f9; min-height: 40px; transition: var(--transition); position: relative; border-left: 4px solid #ccc; }
         .task-item-editable.event { border-left-color: var(--cat-event); }
@@ -66,7 +65,7 @@
         .task-input:focus { border-bottom: 1px solid #ddd; }
         .task-input.completed { text-decoration: line-through; color: #888; }
         
-        .task-actions { display: flex; gap: 5px; margin-left: 10px; opacity: 0; transition: var(--transition); }
+        .task-actions { display: flex; gap: 5px; margin-left: 10px; opacity: 1; flex-shrink: 0; }
         .task-item-editable:hover .task-actions { opacity: 1; }
         .task-action-btn { background: none; border: none; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #666; transition: var(--transition); -webkit-appearance: none; }
         .task-action-btn:hover { background-color: rgba(0, 0, 0, 0.05); color: var(--primary); }
@@ -83,8 +82,8 @@
         .card-header-title { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.95rem; }
         .card-header i { transition: var(--transition); font-size: 0.9rem; }
         .card-header.collapsed i { transform: rotate(-90deg); }
-        .card-content-collapsible { padding: 0 12px; max-height: 500px; overflow: hidden; transition: var(--transition); }
-        .card-content-collapsible.collapsed { max-height: 0; padding: 0 12px; }
+        .card-content-collapsible { padding: 12px; max-height: 1000px; overflow: visible; transition: var(--transition); }
+        .card-content-collapsible.collapsed { max-height: 0; padding: 0 12px; overflow: hidden; }
         
         .backup-section { display: flex; gap: 10px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; flex-shrink: 0; }
         .backup-btn { padding: 8px 12px; background-color: #6c757d; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 6px; flex: 1; user-select: none; -webkit-appearance: none; }
@@ -149,9 +148,9 @@
         .custom-recurrence-row { display: flex; align-items: center; gap: 10px; }
         .custom-recurrence-input { width: 80px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; }
         
-        @media (max-width: 992px) { .nav-buttons { gap: 10px; } .nav-card { max-width: 180px; } .calendar-day { height: 60px; } }
-        @media (max-width: 768px) { .top-nav { flex-direction: column; gap: 15px; padding: 15px; } .nav-buttons { width: 100%; } .nav-card { max-width: none; } .add-task-nav-btn { width: 60px; height: 60px; font-size: 1.8rem; } .calendar-grid { gap: 3px; } .calendar-day { height: 55px; } .category-buttons { justify-content: center; } .modal-content { padding: 20px; width: 95%; } .recurrence-options { grid-template-columns: repeat(2, 1fr); } .task-actions { opacity: 1; } }
-        @media (max-width: 576px) { body { padding: 10px; } .calendar-day { height: 50px; font-size: 0.8rem; } .calendar-day-name { padding: 6px 2px; font-size: 0.8rem; } .nav-card-title { font-size: 0.85rem; } .nav-card-content { font-size: 0.7rem; } .category-btn { padding: 5px 8px; font-size: 0.75rem; } .content-area, .calendar-container, .selected-date-tasks { padding: 15px; } .form-actions { flex-direction: column; } .btn { width: 100%; } .recurrence-options { grid-template-columns: 1fr; } }
+        @media (max-width: 992px) { .nav-card { padding: 10px 12px; } .calendar-day { height: 60px; } }
+        @media (max-width: 768px) { .top-nav { flex-wrap: nowrap; gap: 10px; padding: 12px; } .nav-buttons { gap: 8px; flex-wrap: nowrap; } .nav-card { min-width: 120px; } .add-task-nav-btn { width: 50px; height: 50px; font-size: 1.5rem; } .calendar-grid { gap: 3px; } .calendar-day { height: 55px; } .category-buttons { max-height: none; flex-wrap: wrap; } .category-btn { flex: 1; min-width: calc(50% - 8px); max-width: calc(50% - 8px); } .modal-content { padding: 20px; width: 95%; } .recurrence-options { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 576px) { body { padding: 10px; } .top-nav { padding: 8px; } .nav-card { padding: 8px 10px; min-width: 100px; } .nav-card-title { font-size: 0.8rem; } .nav-card-content { font-size: 0.7rem; } .add-task-nav-btn { width: 45px; height: 45px; font-size: 1.3rem; } .calendar-day { height: 50px; font-size: 0.8rem; } .calendar-day-name { padding: 6px 2px; font-size: 0.8rem; } .category-btn { padding: 5px 8px; font-size: 0.75rem; min-width: calc(50% - 8px); max-width: calc(50% - 8px); } .content-area, .calendar-container, .selected-date-tasks { padding: 15px; } .form-actions { flex-direction: column; } .btn { width: 100%; } .recurrence-options { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -696,7 +695,7 @@
                     <input type="checkbox" class="task-checkbox-editable" ${task.completed ? 'checked' : ''}>
                     <div class="task-content-editable">
                         <textarea class="task-input ${task.completed ? 'completed' : ''}" 
-                                  ${task.completed ? 'disabled' : ''} rows="1">${task.title}</textarea>
+                                  ${task.completed ? 'disabled' : ''} rows="1">${escapeHtml(task.title)}</textarea>
                     </div>
                     <div class="task-actions">
                         <button class="task-action-btn edit" title="Редактировать задачу"><i class="fas fa-edit"></i></button>
@@ -735,20 +734,26 @@
                     }
                 });
                 
-                taskElement.querySelector('.task-action-btn.edit').addEventListener('click', (e) => { e.preventDefault(); openEditTaskModal(task.id); });
+                taskElement.querySelector('.task-action-btn.edit').addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openEditTaskModal(task.id); });
                 taskElement.querySelector('.task-action-btn.recurrence').addEventListener('click', (e) => { 
-                    e.preventDefault(); openEditTaskModal(task.id); 
+                    e.preventDefault(); e.stopPropagation(); openEditTaskModal(task.id); 
                     setTimeout(() => {
                         const recurrenceSection = document.querySelector('#edit-task-form .form-group:nth-child(5)');
                         if (recurrenceSection) recurrenceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 100);
                 });
                 taskElement.querySelector('.task-action-btn.delete').addEventListener('click', (e) => {
-                    e.preventDefault();
+                    e.preventDefault(); e.stopPropagation();
                     if (confirm('Вы уверены, что хотите удалить эту задачу?')) deleteTask(task.id);
                 });
                 
                 return taskElement;
+            }
+            
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
             }
             
             function updateTaskCompletion(taskId, completed, title) {
@@ -965,6 +970,41 @@
             function closeTaskModal() { taskModal.style.display = 'none'; }
             function closeEditTaskModal() { editTaskModal.style.display = 'none'; }
             
+            function openEditTaskModal(taskId) {
+                const tasks = loadTasks();
+                const task = tasks.find(t => t.id === taskId);
+                if (!task) { alert('Задача не найдена'); return; }
+                
+                editingTaskId = taskId;
+                document.getElementById('edit-modal-title').textContent = 'Редактировать задачу';
+                document.getElementById('edit-task-title').value = task.title;
+                document.getElementById('edit-task-description').value = task.description || '';
+                document.getElementById('edit-task-category').value = task.category;
+                
+                const taskDate = new Date(task.date);
+                const formattedDate = taskDate.toISOString().split('T')[0];
+                document.getElementById('edit-task-date').value = formattedDate;
+                
+                editSelectedRecurrence = task.recurrence || 'none';
+                document.querySelectorAll('#edit-recurrence-options .recurrence-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                    if (opt.getAttribute('data-value') === editSelectedRecurrence) {
+                        opt.classList.add('selected');
+                    }
+                });
+                
+                if (task.recurrence === 'custom') {
+                    document.getElementById('edit-custom-recurrence').style.display = 'block';
+                    if (task.recurrenceInterval) document.getElementById('edit-recurrence-interval').value = task.recurrenceInterval;
+                    if (task.recurrenceUnit) document.getElementById('edit-recurrence-unit').value = task.recurrenceUnit;
+                } else {
+                    document.getElementById('edit-custom-recurrence').style.display = 'none';
+                }
+                
+                editTaskModal.style.display = 'flex';
+                setTimeout(() => document.getElementById('edit-task-title').focus(), 100);
+            }
+            
             function saveTask() {
                 const title = document.getElementById('task-title').value.trim();
                 const description = document.getElementById('task-description').value.trim();
@@ -992,9 +1032,7 @@
                 if (selectedRecurrence !== 'none') createRecurringTasks(newTask);
                 saveTasks(tasks);
                 
-                document.getElementById('task-title').value = '';
-                document.getElementById('task-description').value = '';
-                document.getElementById('task-title').focus();
+                closeTaskModal();
                 
                 if (currentView === 'today') showTodayView();
                 else if (currentView === 'category') showCategoryView(currentCategory);
