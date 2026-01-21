@@ -34,8 +34,8 @@
         .main-content { display: flex; flex-direction: column; gap: 20px; flex: 1; }
         .categories-container { background-color: white; border-radius: var(--border-radius); padding: 15px; box-shadow: var(--shadow); }
         .categories-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; color: var(--primary); }
-        .category-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; max-height: 70px; overflow: hidden; }
-        .category-btn { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 16px; border: none; cursor: pointer; transition: var(--transition); font-weight: 500; font-size: 0.8rem; color: white; white-space: nowrap; user-select: none; }
+        .category-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .category-btn { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border-radius: 16px; border: none; cursor: pointer; transition: var(--transition); font-weight: 500; font-size: 0.8rem; color: white; white-space: nowrap; user-select: none; flex-shrink: 0; }
         .category-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
         .category-btn.event { background-color: var(--cat-event); }
         .category-btn.medical { background-color: var(--cat-medical); }
@@ -149,8 +149,33 @@
         .custom-recurrence-input { width: 80px; padding: 8px; border: 1px solid #ddd; border-radius: 6px; }
         
         @media (max-width: 992px) { .nav-card { padding: 10px 12px; } .calendar-day { height: 60px; } }
-        @media (max-width: 768px) { .top-nav { flex-wrap: nowrap; gap: 10px; padding: 12px; } .nav-buttons { gap: 8px; flex-wrap: nowrap; } .nav-card { min-width: 120px; } .add-task-nav-btn { width: 50px; height: 50px; font-size: 1.5rem; } .calendar-grid { gap: 3px; } .calendar-day { height: 55px; } .category-buttons { max-height: none; flex-wrap: wrap; } .category-btn { flex: 1; min-width: calc(50% - 8px); max-width: calc(50% - 8px); } .modal-content { padding: 20px; width: 95%; } .recurrence-options { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 576px) { body { padding: 10px; } .top-nav { padding: 8px; } .nav-card { padding: 8px 10px; min-width: 100px; } .nav-card-title { font-size: 0.8rem; } .nav-card-content { font-size: 0.7rem; } .add-task-nav-btn { width: 45px; height: 45px; font-size: 1.3rem; } .calendar-day { height: 50px; font-size: 0.8rem; } .calendar-day-name { padding: 6px 2px; font-size: 0.8rem; } .category-btn { padding: 5px 8px; font-size: 0.75rem; min-width: calc(50% - 8px); max-width: calc(50% - 8px); } .content-area, .calendar-container, .selected-date-tasks { padding: 15px; } .form-actions { flex-direction: column; } .btn { width: 100%; } .recurrence-options { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .top-nav { flex-wrap: nowrap; gap: 10px; padding: 12px; } 
+            .nav-buttons { gap: 8px; flex-wrap: nowrap; } 
+            .nav-card { min-width: 120px; } 
+            .add-task-nav-btn { width: 50px; height: 50px; font-size: 1.5rem; } 
+            .calendar-grid { gap: 3px; } 
+            .calendar-day { height: 55px; } 
+            .category-buttons { gap: 6px; } 
+            .category-btn { padding: 5px 8px; font-size: 0.75rem; } 
+            .modal-content { padding: 20px; width: 95%; } 
+            .recurrence-options { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 576px) { 
+            body { padding: 10px; } 
+            .top-nav { padding: 8px; } 
+            .nav-card { padding: 8px 10px; min-width: 100px; } 
+            .nav-card-title { font-size: 0.8rem; } 
+            .nav-card-content { font-size: 0.7rem; } 
+            .add-task-nav-btn { width: 45px; height: 45px; font-size: 1.3rem; } 
+            .calendar-day { height: 50px; font-size: 0.8rem; } 
+            .calendar-day-name { padding: 6px 2px; font-size: 0.8rem; } 
+            .category-btn { padding: 5px 8px; font-size: 0.75rem; min-width: auto; } 
+            .content-area, .calendar-container, .selected-date-tasks { padding: 15px; } 
+            .form-actions { flex-direction: column; } 
+            .btn { width: 100%; } 
+            .recurrence-options { grid-template-columns: 1fr; } 
+        }
     </style>
 </head>
 <body>
